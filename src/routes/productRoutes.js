@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { ProudctData } from "../controller/productControllers.js";
+import { productCreate, ProudctData } from "../controller/productControllers.js";
 
 
 const prodAuth = new Router();
 
-prodAuth.post("/products", ProudctData);
+prodAuth.get("/products", ProudctData);
+prodAuth.post("/product", productCreate);
 
 export default prodAuth;

@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import customerRoute from "./src/routes/customerRoutes.js";
 import prodAuth from "./src/routes/productRoutes.js";
+import webhookRouter from "./src/routes/webhookRoutes.js";
 dotenv.config({
   path: "./.env",
 });
@@ -31,7 +32,10 @@ app.use('/api/get', customerRoute);
 app.use('/api/update', customerRoute);
 app.use('/api/delete', customerRoute);
 app.use('/api/get', prodAuth);
-app.use('/api/product/create', customerRoute);
+app.use('/api/create', prodAuth);
+
+// webhooks API
+app.use('/api/webhook', webhookRouter)
 
 
 const PORT = process.env.BACKEND_PORT || 8000;
